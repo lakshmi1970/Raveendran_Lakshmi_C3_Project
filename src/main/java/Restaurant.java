@@ -29,7 +29,7 @@ public class Restaurant {
         return menu;
         //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE
     }
- 
+
     private Item findItemByName(String itemName){
         for(Item item: menu) {
             if(item.getName().equals(itemName))
@@ -64,4 +64,11 @@ public class Restaurant {
         return name;
     }
 
+    public int getTotalCost(List<String> selectedItems) {
+        int totalcost =0 ;
+        for (String itemname : selectedItems ) {
+         totalcost = totalcost+findItemByName(itemname).getPrice();
+        }
+        return totalcost;
+    }
 }
