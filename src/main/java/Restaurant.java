@@ -6,8 +6,8 @@ import java.util.List;
 public class Restaurant {
     private String name;
     private String location;
-    public LocalTime openingTime;
-    public LocalTime closingTime;
+    public LocalTime openingTime; // 9am
+    public LocalTime closingTime; // 10pm
     private List<Item> menu = new ArrayList<Item>();
 
     public Restaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
@@ -18,17 +18,18 @@ public class Restaurant {
     }
 
     public boolean isRestaurantOpen() {
-        return true;
+        return (getCurrentTime().isAfter(this.openingTime) && getCurrentTime().isBefore(this.closingTime))? true :false;
         //DELETE ABOVE STATEMENT AND WRITE CODE HERE
     }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
     public List<Item> getMenu() {
-        return null;
+        List<Item> menu = this.menu;
+        return menu;
         //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE
     }
-
+ 
     private Item findItemByName(String itemName){
         for(Item item: menu) {
             if(item.getName().equals(itemName))
